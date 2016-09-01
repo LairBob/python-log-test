@@ -1,0 +1,15 @@
+2016-08-29 23:02:26,774 ERROR Error!
+Traceback (most recent call last):
+  File "C:/Users/lstanevich/Dev/python-log-test/python_log_test.py", line 42, in main
+    raise RuntimeError
+RuntimeError
+2016-08-29 23:02:26,774 ERROR Error!
+Traceback (most recent call last):
+  File "C:/Users/lstanevich/Dev/python-log-test/python_log_test.py", line 42, in main
+    raise RuntimeError
+RuntimeError
+2016-08-29 23:02:26,774 ERROR Error!
+Traceback (most recent call last):
+  File "C:/Users/lstanevich/Dev/python-log-test/python_log_test.py", line 42, in main
+    raise RuntimeError
+RuntimeError

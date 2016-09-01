@@ -7,19 +7,49 @@ Created on Mon Aug 29 20:30:20 2016
 
 import logging
 
-def main():
-    print("Testing")
-    logger = logging.getLogger()
-    fhandler = logging.FileHandler(filename='log_test.log', mode='w')
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    fhandler.setFormatter(formatter)
-    logger.addHandler(fhandler)
-    logger.setLevel(logging.DEBUG)
-     
-    try:
-        raise RuntimeError
-    except Exception:
-        logger.exception("Error!")
+def logger():
 
-if __name__ == "__main__":
-    main()
+      print ('initializing logger....')
+      logPath = '.'
+      fileName = 'log_test'
+
+      # configure log formatter
+      logFormatter = logging.Formatter("%(asctime)s [%(filename)s] [%(funcName)s] [%(levelname)s] [%(lineno)d] %(message)s")
+
+      # configure file handler
+      fileHandler = logging.FileHandler("{0}/{1}.log".format(logPath, fileName), mode="w")
+      fileHandler.setFormatter(logFormatter)
+
+      # configure stream handler
+      consoleHandler = logging.StreamHandler()
+      consoleHandler.setFormatter(logFormatter)
+
+      # get the logger instance
+      logger = logging.getLogger(__name__)
+
+      # set the logging level
+      logger.setLevel(logging.DEBUG)
+
+      print ('adding handlers- ')
+
+      #if not len(logger.handlers):
+      logger.addHandler(fileHandler)
+      logger.addHandler(consoleHandler)
+
+      print ('logger initialized....\n')
+      print ('associated handlers - ', len(logger.handlers))
+      for handler in logger.handlers:
+            print (handler)
+      print()
+      return logger
+
+print ('inside main.py')
+print ('-'*50)
+
+main_logger = logger()
+main_logger.info('utilizing main.py logger.')
+print ('exiting main.py')   
+print ('-'*50)
+
+#if __name__ == "__main__":
+#    main()
